@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react"
+import { useState, useEffect, useCallback, useMemo, useRef } from "react"
 
 interface User {
   id: number
@@ -39,11 +39,15 @@ function App() {
   const myNum = 10
   const memoizedFib = useMemo(() => fib(myNum), [myNum])
 
+  //useRef
+  const inputRef = useRef<HTMLInputElement>(null)
+
   return (
     <div className="App">
       <h1>{count}</h1>
       <button onClick={addTwo}>Add</button>
       <h2>{memoizedFib}</h2>
+      <input ref={inputRef} />
     </div>
   )
 }
