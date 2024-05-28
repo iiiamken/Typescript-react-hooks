@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useMemo } from "react"
 
 interface User {
   id: number
@@ -29,9 +29,21 @@ function App() {
     []
   )
 
+  //useMemo
+  type fibFunc = (n: number) => number
+  const fib: fibFunc = (n) => {
+    if (n <= 1) return 1
+    return fib(n - 1) + fib(n - 2)
+  }
+
+  const myNum = 10
+  const memoizedFib = useMemo(() => fib(myNum), [myNum])
+
   return (
     <div className="App">
+      <h1>{count}</h1>
       <button onClick={addTwo}>Add</button>
+      <h2>{memoizedFib}</h2>
     </div>
   )
 }
