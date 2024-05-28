@@ -7,11 +7,17 @@ interface User {
 
 function App() {
   const [count, setCount] = useState<number>(0)
-  const [user, setUser] = useState<User | null>(null)
+  const [users, setUsers] = useState<User | null>(null)
 
   useEffect(() => {
     console.log("mounting")
-  }, [])
+    console.log(users)
+
+    // cleanup function
+    return () => {
+      console.log("unmounting")
+    }
+  }, [users])
 
   return (
     <div className="App">
