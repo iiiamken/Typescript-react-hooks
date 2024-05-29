@@ -7,7 +7,7 @@ interface User {
 
 function App() {
   const [count, setCount] = useState<number>(0)
-  const [users, setUsers] = useState<User | null>(null)
+  const [users] = useState<User | null>(null)
 
   //useEffect
   useEffect(() => {
@@ -31,6 +31,12 @@ function App() {
 
   //useMemo
   type fibFunc = (n: number) => number
+  /**
+   * Calculates the Fibonacci number for a given input.
+   *
+   * @param {number} n - The input number for which to calculate the Fibonacci number.
+   * @return {number} The Fibonacci number corresponding to the input.
+   */
   const fib: fibFunc = (n) => {
     if (n <= 1) return 1
     return fib(n - 1) + fib(n - 2)
